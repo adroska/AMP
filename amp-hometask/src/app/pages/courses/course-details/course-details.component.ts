@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './course-details.component.html',
   styleUrls: ['./course-details.component.css']
 })
+
 export class CourseDetailsComponent implements OnInit {
 
   constructor() { }
@@ -12,4 +13,11 @@ export class CourseDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
+}
+
+interface Course {
+  title: string;
+  duration: number;
+  date: Date;
+  description: string;
 }
