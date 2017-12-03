@@ -1,9 +1,17 @@
 .logo {
-    img {
-        height: 40px;
-    }
-
     h1 {
         display: inline-block;
+
+        &:before {
+            content: "";
+            display: inline-block;
+            height: 40px;
+            width: 80px;
+            background-image: url("https://www.w3schools.com/css/img_lights.jpg");
+            background-size: cover;
+            position: relative;
+            bottom: -10px;
+            margin-right: 10px;
+        }
     }
 }
