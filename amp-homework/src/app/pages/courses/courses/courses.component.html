@@ -1,8 +1,9 @@
 <app-header></app-header>
+<app-tool-box></app-tool-box>
 <div class="courses">
     <ul>
         <li *ngFor="let item of courses">
-            <app-course-details [course]="item"></app-course-details>
+            <app-course-details [course]="item" (delClick)="deleteCourse($event)"></app-course-details>
         </li>
     </ul>
 </div>
