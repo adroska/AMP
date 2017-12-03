@@ -1,3 +1,16 @@
-<p>
-  course-details works!
-</p>
+<div class="course-item">
+    <div class="course-details">
+        <div class="data-header">
+            <h1>{{course.title}}</h1>
+            <span>{{course.duration}}</span>
+            <span>{{course.creationDate}}</span>
+        </div>
+        <div class="data-body">
+            {{course.description}}
+        </div>
+    </div>
+    <div class="course-actions">
+        <button>Edit course</button>
+        <button>Delete</button>
+    </div>
+</div>

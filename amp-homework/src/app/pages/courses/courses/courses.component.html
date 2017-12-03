@@ -1,3 +1,9 @@
-<p>
-  courses works!
-</p>
+<app-header></app-header>
+<div class="courses">
+    <ul>
+        <li *ngFor="let item of courses">
+            <app-course-details [course]="item"></app-course-details>
+        </li>
+    </ul>
+</div>
+<app-footer></app-footer>
