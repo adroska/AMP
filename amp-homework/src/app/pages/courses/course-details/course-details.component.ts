@@ -18,7 +18,7 @@ export class CourseDetailsComponent implements OnInit {
 
     deleteCourse() {
         this.deleteClick.emit({
-            value: this.course.id
+            id: this.course.id
         });
     }
 }
