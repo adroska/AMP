@@ -11,6 +11,7 @@ import { CourseDetailsComponent } from './pages/courses/course-details/course-de
 import { LoginComponent } from './pages/login/login/login.component';
 import { ToolBoxComponent } from './pages/courses/tool-box/tool-box.component';
 import { CoursesService } from './pages/courses/courses.service';
+import { AuthService } from './pages/login/auth.service';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { CoursesService } from './pages/courses/courses.service';
     BrowserModule,
     FormsModule
   ],
-  providers: [CoursesService],
+  providers: [CoursesService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
