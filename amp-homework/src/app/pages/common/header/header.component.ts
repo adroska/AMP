@@ -7,31 +7,26 @@ import { User } from '../../../interfaces/user';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit { 
-  user : User = {
-    username: 'bla',
-    password: 'blabla',
-    token: 'blablabla'
-  };
-
+export class HeaderComponent implements OnInit {
+  
   constructor(private AuthService: AuthService) { }
 
   ngOnInit() {
   }
 
-  logIn() {
-    this.AuthService.logIn(this.user);
+  logIn(): void {
+    this.AuthService.logIn(this.AuthService.user);
   }
 
-  logOut() {
+  logOut(): void {
     this.AuthService.logOut();
   }
 
-  isAuthenticated() {
-    this.AuthService.isAuthenticated();
+  isAuthenticated(): boolean {
+    return this.AuthService.isAuthenticated();
   }
 
-  getUserInfo() {
-    this.AuthService.getUserInfo();
+  getUserInfo(): User {
+    return this.AuthService.getUserInfo();
   }
 }
