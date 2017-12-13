@@ -10,14 +10,14 @@ import { CoursesService } from '../courses.service';
 export class CoursesComponent implements OnInit {
     public courses: Course[];
 
-    constructor(private CoursesService: CoursesService) {
+    constructor(private coursesService: CoursesService) {
     }
 
     ngOnInit() {
-        this.courses = this.CoursesService.getList();
+        this.courses = this.coursesService.getList();
     }
 
     deleteCourse(event) {
-        this.CoursesService.removeItemById(event.id);
+        this.coursesService.removeItemById(event.id);
     }
 }

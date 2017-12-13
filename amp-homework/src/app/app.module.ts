@@ -11,7 +11,7 @@ import { CourseDetailsComponent } from './pages/courses/course-details/course-de
 import { LoginComponent } from './pages/login/login/login.component';
 import { ToolBoxComponent } from './pages/courses/tool-box/tool-box.component';
 import { CoursesService } from './pages/courses/courses.service';
-import { AuthService } from './pages/login/auth.service';
+import { AuthService } from '../app/common/auth.service';
 
 
 @NgModule({
