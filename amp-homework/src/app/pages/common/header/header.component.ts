@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../login/auth.service';
+import { AuthService } from '../../../common/auth.service';
 import { User } from '../../../interfaces/user';
 
 @Component({
@@ -9,24 +9,24 @@ import { User } from '../../../interfaces/user';
 })
 export class HeaderComponent implements OnInit {
   
-  constructor(private AuthService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   logIn(): void {
-    this.AuthService.logIn(this.AuthService.user);
+    this.authService.logIn(this.authService.user);
   }
 
   logOut(): void {
-    this.AuthService.logOut();
+    this.authService.logOut();
   }
 
   isAuthenticated(): boolean {
-    return this.AuthService.isAuthenticated();
+    return this.authService.isAuthenticated();
   }
 
   getUserInfo(): User {
-    return this.AuthService.getUserInfo();
+    return this.authService.getUserInfo();
   }
 }
