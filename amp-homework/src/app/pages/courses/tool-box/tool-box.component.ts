@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Course } from '../../../interfaces/course';
+import { courses } from '../../../mock-data/courses';
 
 @Component({
   selector: 'app-tool-box',
@@ -7,14 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolBoxComponent implements OnInit {
   public searchText: string;
+  @Output() filterCourses = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  findCourse() {
-    console.log(`${this.searchText}`);
+  findCourses() {
+    this.filterCourses.emit(this.searchText);
   }
 
   addCourse() {
