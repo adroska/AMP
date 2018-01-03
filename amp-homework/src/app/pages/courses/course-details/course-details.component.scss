@@ -42,4 +42,15 @@
             width: 50%;
         }
     }
+
+    &.topRated {
+        background-color: #ccccb3;
+
+        .data-header {
+            .duration:after {
+                content: '*';
+                margin-left: 10px;
+            }
+        }
+    }
 }

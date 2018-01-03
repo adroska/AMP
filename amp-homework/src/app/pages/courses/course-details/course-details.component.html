@@ -1,8 +1,8 @@
-<div class="course-item">
+<div class="course-item" [ngClass]="{'topRated': course.topRated}" [appBorderColor]="course.creationDate">
     <div class="course-details">
         <div class="data-header">
-            <h1>{{course.title}}</h1>
-            <span>{{course.duration}} min</span> <!-- plan to use custom pipe to show time in x h y min format -->
+            <h1>{{course.title | uppercase}}</h1>
+            <span class="duration">{{course.duration | duration}}</span>
             <span>{{course.creationDate | date:"MM/dd/yyyy"}}</span>
         </div>
         <div class="data-body">

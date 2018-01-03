@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Course } from '../../../interfaces/course';
+import { BorderColorDirective } from '../../../common/border-color.directive';
 
 @Component({
     selector: 'app-course-details',

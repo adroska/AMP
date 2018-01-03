@@ -12,6 +12,10 @@ import { LoginComponent } from './pages/login/login/login.component';
 import { ToolBoxComponent } from './pages/courses/tool-box/tool-box.component';
 import { CoursesService } from './pages/courses/courses.service';
 import { AuthService } from './common/auth.service';
+import { BorderColorDirective } from './common/border-color.directive';
+import { DurationPipe } from './common/duration.pipe';
+import { OrderByPipe } from './common/order-by.pipe';
+import { FilterByPipe } from './common/filter-by.pipe';
 
 
 @NgModule({
@@ -23,7 +27,11 @@ import { AuthService } from './common/auth.service';
     CoursesComponent,
     CourseDetailsComponent,
     LoginComponent,
-    ToolBoxComponent
+    ToolBoxComponent,
+    BorderColorDirective,
+    DurationPipe,
+    OrderByPipe,
+    FilterByPipe
   ],
   imports: [
     BrowserModule,
