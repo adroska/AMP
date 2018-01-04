@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from  '@angular/router';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './pages/common/footer/footer.component';
@@ -16,7 +18,6 @@ import { BorderColorDirective } from './common/border-color.directive';
 import { DurationPipe } from './common/duration.pipe';
 import { OrderByPipe } from './common/order-by.pipe';
 import { FilterByPipe } from './common/filter-by.pipe';
-
 
 @NgModule({
   declarations: [
@@ -35,7 +36,18 @@ import { FilterByPipe } from './common/filter-by.pipe';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot([
+      {
+        path: 'courses',
+        component: CoursesComponent
+      },
+      {
+        path: 'login',
+        component: LoginComponent
+      }
+    ])
   ],
   providers: [CoursesService, AuthService],
   bootstrap: [AppComponent]

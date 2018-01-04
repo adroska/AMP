@@ -1,11 +1,11 @@
 <div class="header">
   <app-logo></app-logo>
-  <div class="breadcrumb" *ngIf="isAuthenticated()"> <!-- can be new component -->
+  <div class="breadcrumb" *ngIf="isAuthenticated()">
     <a href="url">breadcrumb1</a> /
     <a href="url">breadcrumb2</a>
   </div>
-  <div class="log-in-out"> <!-- can be new component -->
-    <a href="url" (click)=logIn() *ngIf="!isAuthenticated()">User Login</a>
-    <a href="url" (click)=logOut() *ngIf="isAuthenticated()">Logout</a>
+  <div class="log-in-out">
+    <a href="/login" (click)=logIn() *ngIf="!isAuthenticated()">User Login</a>
+    <a href="/" (click)=logOut() *ngIf="isAuthenticated()">Logout</a>
   </div>
 </div>
