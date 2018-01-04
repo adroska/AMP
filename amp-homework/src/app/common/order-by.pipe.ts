@@ -11,10 +11,7 @@ export class OrderByPipe implements PipeTransform {
       var value1 = item1[courseProperty],
           value2 = item2[courseProperty];
 
-      if(value1 < value2) return (isIncrease) ? -1 : 1;
-      if(value1 > value2) return (isIncrease) ? 1 : -1;
-      return 0;
+      return isIncrease ? value1 - value2 : value2 - value1;     
     });
   }
-
 }
