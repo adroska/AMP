@@ -7,10 +7,10 @@ export class BorderColorDirective implements OnInit {
   @Input('appBorderColor') creationDate: Date;
   private twoWeeksInMillisec = 14 * 24 * 60 * 60 * 1000;
 
-  constructor(private el: ElementRef) {
+  public constructor(private el: ElementRef) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.el.nativeElement.style.borderColor  = this.colorByDate(this.creationDate);
   }
 

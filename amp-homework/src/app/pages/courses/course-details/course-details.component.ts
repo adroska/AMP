@@ -14,12 +14,12 @@ export class CourseDetailsComponent implements OnInit {
     @Input('course') course: Course;
     @Output('delClick') deleteClick = new EventEmitter();
 
-    constructor() { }
+    public constructor() { }
 
-    ngOnInit() {
+    public ngOnInit() {
     }
 
-    deleteCourse() {
+    public deleteCourse() {
         this.deleteClick.emit({
             id: this.course.id
         });

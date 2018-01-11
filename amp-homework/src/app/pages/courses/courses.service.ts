@@ -7,21 +7,21 @@ export class CoursesService {
 
   private courseList: Course[];
 
-  constructor() { }
+  public constructor() { }
 
-  getList(): Course[] {
+  public getList(): Course[] {
     return this.courseList = courses;
   }
 
-  createItem(course: Course): void {
+  private createItem(course: Course): void {
     this.courseList.push(course);
   }
 
-  getItemById(id: number): Course {
+  private getItemById(id: number): Course {
     return this.courseList.find(isMatchingId, id);
   }
 
-  removeItemById(id: number): void {
+  public removeItemById(id: number): void {
     if (window.confirm('Do you really want to delete this course?')) {
       var itemIndex = this.courseList.findIndex(isMatchingId, id);
 
@@ -29,7 +29,7 @@ export class CoursesService {
     }
   }
 
-  updateItem(modifiedCourse: Course): void {
+  private updateItem(modifiedCourse: Course): void {
     var course = this.getItemById(modifiedCourse.id),
         key;
     if (course) {

@@ -6,7 +6,7 @@ import { Course } from '../interfaces/course';
 })
 export class OrderByPipe implements PipeTransform {
 
-  transform(courses: Course[], courseProperty: string, isIncrease: boolean): Course[] {
+  public transform(courses: Course[], courseProperty: string, isIncrease: boolean): Course[] {
     return courses.sort((item1: Course, item2: Course) => {
       var value1 = item1[courseProperty],
           value2 = item2[courseProperty];
