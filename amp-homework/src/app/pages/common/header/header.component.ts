@@ -9,24 +9,24 @@ import { User } from '../../../interfaces/user';
 })
 export class HeaderComponent implements OnInit {
   
-  constructor(private authService: AuthService) { }
+  public constructor(private authService: AuthService) { }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
-  logIn(): void {
+  public logIn(): void {
     this.authService.logIn(this.authService.user);
   }
 
-  logOut(): void {
+  public logOut(): void {
     this.authService.logOut();
   }
 
-  isAuthenticated(): boolean {
+  public isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
   }
 
-  getUserInfo(): User {
+  public getUserInfo(): User {
     return this.authService.getUserInfo();
   }
 }

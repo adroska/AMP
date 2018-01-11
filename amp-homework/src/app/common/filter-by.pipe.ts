@@ -6,7 +6,7 @@ import { Course } from '../interfaces/course';
 })
 export class FilterByPipe implements PipeTransform {
 
-  transform(courses: Course[], courseProperty: string, searchText: string): Course[] {
+  public transform(courses: Course[], courseProperty: string, searchText: string): Course[] {
     return courses.filter(course => course[courseProperty].toLowerCase().includes(searchText.toLowerCase()));
   }
 

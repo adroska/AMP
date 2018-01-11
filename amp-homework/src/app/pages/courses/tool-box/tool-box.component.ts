@@ -11,15 +11,15 @@ export class ToolBoxComponent implements OnInit {
   public searchText: string;
   @Output() filterCourses = new EventEmitter();
 
-  constructor() { }
+  public constructor() { }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
-  findCourses() {
+  public findCourses() {
     this.filterCourses.emit(this.searchText);
   }
 
-  addCourse() {
+  public addCourse() {
   }
 }

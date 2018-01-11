@@ -10,23 +10,23 @@ export class AuthService {
     token: 'blablabla'
   };
 
-  constructor() { }
+  public constructor() { }
 
-  logIn(userInfo: User): void {
+  public logIn(userInfo: User): void {
     window.localStorage.setItem('userInfo', JSON.stringify(userInfo));
     window.alert('*** You are logging in. ***');
   }
 
-  logOut(): void {
+  public logOut(): void {
     window.localStorage.removeItem('userInfo');
     window.alert('*** You are logging out. ***');
   }
 
-  isAuthenticated(): boolean {
+  public isAuthenticated(): boolean {
     return !!this.getUserInfo();
   }
 
-  getUserInfo(): User {
+  public getUserInfo(): User {
     return JSON.parse(window.localStorage.getItem('userInfo'));
   }
 

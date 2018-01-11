@@ -13,20 +13,20 @@ export class CoursesComponent implements OnInit {
     public courses: Course[];
     private coursesOriginal: Course[];
 
-    constructor(private coursesService: CoursesService,
+    public constructor(private coursesService: CoursesService,
                 private filterByPipe: FilterByPipe) {
     }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.courses = this.coursesService.getList();
         this.coursesOriginal = this.courses;
     }
 
-    deleteCourse(event) {
+    private deleteCourse(event) {
         this.coursesService.removeItemById(event.id);
     }
 
-    filterCourses(text) {
+    public filterCourses(text) {
         this.courses = this.filterByPipe.transform(this.coursesOriginal, 'title', text);
     }
 }
