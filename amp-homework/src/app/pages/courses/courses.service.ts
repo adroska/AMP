@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Course } from '../../interfaces/course';
 import { courses } from '../../mock-data/courses';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class CoursesService {
@@ -10,7 +11,17 @@ export class CoursesService {
   public constructor() { }
 
   public getList(): Course[] {
-    return this.courseList = courses;
+    this.courseList = [];
+    var source = Observable.from(courses)
+    .filter(course => {
+      var currentDate = new Date(),
+        twoWeeksInMillisec = 14 * 24 * 60 * 60 * 1000;
+      
+      return !(currentDate.valueOf() - twoWeeksInMillisec > course.creationDate.valueOf());
+    });
+    source.subscribe(x => this.courseList.push(x));
+
+    return this.courseList;
   }
 
   private createItem(course: Course): void {
