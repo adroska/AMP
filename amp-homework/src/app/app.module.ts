@@ -18,6 +18,7 @@ import { BorderColorDirective } from './common/border-color.directive';
 import { DurationPipe } from './common/duration.pipe';
 import { OrderByPipe } from './common/order-by.pipe';
 import { FilterByPipe } from './common/filter-by.pipe';
+import { AddCourseComponent } from './pages/courses/add-course/add-course.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FilterByPipe } from './common/filter-by.pipe';
     BorderColorDirective,
     DurationPipe,
     OrderByPipe,
-    FilterByPipe
+    FilterByPipe,
+    AddCourseComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,10 @@ import { FilterByPipe } from './common/filter-by.pipe';
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'add-course',
+        component: AddCourseComponent
       }
     ])
   ],

@@ -24,5 +24,21 @@ export var courses: Course[] = [
         creationDate: new Date(2012, 4, 30),
         description: 'Description of video course 3',
         topRated: true
+    },
+    {
+        id: 4,
+        title: 'Video course 4',
+        duration: 79,
+        creationDate: new Date(2017, 4, 2),
+        description: 'Description of video course 4',
+        topRated: false
+    },
+    {
+        id: 5,
+        title: 'Video course 5',
+        duration: 143,
+        creationDate: new Date(2017, 11, 31),
+        description: 'Description of video course 5',
+        topRated: false
     }
 ];

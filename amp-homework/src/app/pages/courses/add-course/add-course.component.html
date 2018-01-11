@@ -1,0 +1,16 @@
+<div class="add-course">
+  <label for="title">Title</label>
+  <input type=text id="title" placeholder="Title" [(ngModel)]="course.title"><br/>
+  <label for="description">Description</label>
+  <textarea id="description" rows="4" cols="50" placeholder="Description" [(ngModel)]="course.description"></textarea><br/>
+  <label for="date">Date</label>
+  <input type=text id="date" [(ngModel)]="course.creationDate"><br/>
+  <label for="duration">Duration (min)</label>
+  <input type=text id="duration" [(ngModel)]="course.duration">{{course.duration | duration}}<br/>
+  <label for="authors">Authors</label>
+  <input type=text id="author">
+  <div class="buttons">
+    <button (click)='save()'>Save</button>
+    <button (click)='cancel()'>Cancel</button>
+  </div>
+</div>
