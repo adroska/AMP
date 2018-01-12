@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../common/auth.service';
+import { ChangeDetectionStrategy } from '@angular/core/src/change_detection/constants';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
 
