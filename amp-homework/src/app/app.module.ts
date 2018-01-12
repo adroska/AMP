@@ -42,6 +42,10 @@ import { AuthGuard } from './common/auth.guard';
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
+      { path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
+      },
       {
         path: 'courses',
         component: CoursesComponent,
