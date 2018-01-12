@@ -19,6 +19,7 @@ import { DurationPipe } from './common/duration.pipe';
 import { OrderByPipe } from './common/order-by.pipe';
 import { FilterByPipe } from './common/filter-by.pipe';
 import { AddCourseComponent } from './pages/courses/add-course/add-course.component';
+import { AuthGuard } from './common/auth.guard';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AddCourseComponent } from './pages/courses/add-course/add-course.compon
     RouterModule.forRoot([
       {
         path: 'courses',
-        component: CoursesComponent
+        component: CoursesComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'login',
@@ -51,11 +53,12 @@ import { AddCourseComponent } from './pages/courses/add-course/add-course.compon
       },
       {
         path: 'add-course',
-        component: AddCourseComponent
+        component: AddCourseComponent,
+        canActivate: [AuthGuard]
       }
     ])
   ],
-  providers: [CoursesService, AuthService],
+  providers: [CoursesService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

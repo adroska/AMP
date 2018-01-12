@@ -6,4 +6,16 @@
     .add {
         float: right;
     }
+
+    button {
+        a {
+            text-decoration: none;
+            
+            &:active,
+            &:hover,
+            &:visited {
+                color: #000;
+            }
+        }
+    }
 }
