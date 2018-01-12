@@ -8,8 +8,8 @@ import { AuthService } from '../../../common/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  userName: string;
-  password: string;
+  public userName: string;
+  public password: string;
 
   public constructor(private authService: AuthService) { }
 
@@ -19,6 +19,10 @@ export class LoginComponent implements OnInit {
 
   public logIn(): void {
     this.authService.logIn(this.authService.user);
+  }
+
+  public isLoggedIn(): boolean {
+    return this.authService.isAuthenticated();
   }
 
 }

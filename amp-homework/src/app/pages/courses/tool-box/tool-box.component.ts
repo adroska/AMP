@@ -19,7 +19,4 @@ export class ToolBoxComponent implements OnInit {
   public findCourses() {
     this.filterCourses.emit(this.searchText);
   }
-
-  public addCourse() {
-  }
 }
