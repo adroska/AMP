@@ -1,10 +1,5 @@
 <div class="form">
-  <div *ngIf="isLoggedIn()">
-    <h2>You are logged in</h2>
-    <button><a href="/courses">Check course list</a></button>
-  </div>
-
-  <div *ngIf="!isLoggedIn()">
+  <div>
     <div>
       <label>Username</label>
       <input type="text" [(ngModel)]="userName"> *

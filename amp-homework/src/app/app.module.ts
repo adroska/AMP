@@ -43,7 +43,7 @@ import { AuthGuard } from './common/auth.guard';
     HttpModule,
     RouterModule.forRoot([
       { path: '',
-        redirectTo: 'login',
+        redirectTo: 'courses',
         pathMatch: 'full'
       },
       {
@@ -60,7 +60,7 @@ import { AuthGuard } from './common/auth.guard';
         component: AddCourseComponent,
         canActivate: [AuthGuard]
       }
-    ])
+    ], { useHash: true })
   ],
   providers: [CoursesService, AuthService, AuthGuard],
   bootstrap: [AppComponent]

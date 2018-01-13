@@ -1,25 +1,24 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../interfaces/user';
 
 @Injectable()
 export class AuthService {
 
-  user : User = {
-    username: 'bla',
-    password: 'blabla',
-    token: 'blablabla'
-  };
+  public constructor(
+      private router: Router,
+    ) { }
 
-  public constructor() { }
-
-  public logIn(userInfo: User): void {
-    window.localStorage.setItem('userInfo', JSON.stringify(userInfo));
-    window.alert('*** You are logging in. ***');
+  public logIn(username: string,password: string): void {
+      if(username === 'Anonymus' && password === 'Password'){
+          window.localStorage.setItem('userInfo', JSON.stringify({username,password}));
+          this.router.navigate(['courses']);
+      }
   }
 
   public logOut(): void {
     window.localStorage.removeItem('userInfo');
-    window.alert('*** You are logging out. ***');
+     this.router.navigate(['login']);
   }
 
   public isAuthenticated(): boolean {
