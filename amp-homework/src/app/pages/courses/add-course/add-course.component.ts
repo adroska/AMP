@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Course } from '../../../interfaces/course';
 import { ChangeDetectionStrategy } from '@angular/core/src/change_detection/constants';
 
@@ -11,7 +12,9 @@ import { ChangeDetectionStrategy } from '@angular/core/src/change_detection/cons
 export class AddCourseComponent implements OnInit {
   public course: Course;
 
-  public constructor() { }
+  public constructor(
+    private router: Router,
+  ) { }
 
   public ngOnInit() {
     this.course = { 
@@ -30,5 +33,6 @@ export class AddCourseComponent implements OnInit {
 
   public cancel() {
     console.log('Add Course Component - Cancel');
+    this.router.navigate(['courses']);
   }
 }

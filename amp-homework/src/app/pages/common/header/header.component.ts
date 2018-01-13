@@ -11,13 +11,11 @@ import { ChangeDetectionStrategy } from '@angular/core/src/change_detection/cons
 })
 export class HeaderComponent implements OnInit {
   
-  public constructor(private authService: AuthService) { }
+  public constructor(
+    private authService: AuthService,
+  ) { }
 
   public ngOnInit() {
-  }
-
-  public logIn(): void {
-    this.authService.logIn(this.authService.user);
   }
 
   public logOut(): void {
