@@ -1,27 +1,42 @@
 import { Injectable } from '@angular/core';
+import { Http, Response, Request, RequestOptions, RequestMethod } from '@angular/http';
 import { Course } from '../../interfaces/course';
 import { courses } from '../../mock-data/courses';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CoursesService {
 
   private courseList: Course[];
+  private baseUrl: string;
 
-  public constructor() { }
+  public constructor(private http: Http) {
+    this.baseUrl = 'http://localhost:4002';
+  }
 
-  public getList(): Course[] {
-    this.courseList = [];
-    var source = Observable.from(courses)
-    .filter(course => {
-      var currentDate = new Date(),
-        twoWeeksInMillisec = 14 * 24 * 60 * 60 * 1000;
-      
-      return !(currentDate.valueOf() - twoWeeksInMillisec > course.creationDate.valueOf());
-    });
-    source.subscribe(x => this.courseList.push(x));
+  /*public getList(): Observable<Course> {  // WITHOUT HTTP - WORKS
+    return Observable.from(courses)
+      .filter(course => {
+        var currentDate = new Date(),
+          twoWeeksInMillisec = 14 * 24 * 60 * 60 * 1000;
+        
+        return !(currentDate.valueOf() - twoWeeksInMillisec > course.creationDate.valueOf());
+      });
+  }*/
 
-    return this.courseList;
+  public getList(): Observable<Course[]> {    // WITH HTTP - DOESN'T WORK
+    let request: Request,
+      requestOptions: RequestOptions = new RequestOptions();
+
+      requestOptions.method = RequestMethod.Get;
+      requestOptions.url = `${this.baseUrl}/courses`;
+
+      request = new Request(requestOptions);
+
+      return this.http.request(request)
+        .map((response: Response) => response.json())
+        .map((courses) => courses.map((course) => new Course(course)));
+
   }
 
   private createItem(course: Course): void {
