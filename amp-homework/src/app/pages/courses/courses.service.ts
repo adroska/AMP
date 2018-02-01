@@ -14,17 +14,7 @@ export class CoursesService {
     this.baseUrl = 'http://localhost:4002';
   }
 
-  /*public getList(): Observable<Course> {  // WITHOUT HTTP - WORKS
-    return Observable.from(courses)
-      .filter(course => {
-        var currentDate = new Date(),
-          twoWeeksInMillisec = 14 * 24 * 60 * 60 * 1000;
-        
-        return !(currentDate.valueOf() - twoWeeksInMillisec > course.creationDate.valueOf());
-      });
-  }*/
-
-  public getList(): Observable<Course[]> {    // WITH HTTP - DOESN'T WORK
+  public getList(): Observable<Course[]> {
     let request: Request,
       requestOptions: RequestOptions = new RequestOptions();
 

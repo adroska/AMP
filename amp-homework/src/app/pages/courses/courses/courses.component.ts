@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Course } from '../../../interfaces/course';
 import { CoursesService } from '../courses.service';
 import { FilterByPipe } from '../../../common/filter-by.pipe';
@@ -13,8 +13,8 @@ import { Subscription } from 'rxjs/Subscription';
   providers: [FilterByPipe],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CoursesComponent implements OnInit, OnDestroy {
-    public courses: Course[] = [];
+export class CoursesComponent implements OnInit {
+    public courses: Observable<Course[]>;
     private coursesOriginal: Course[];
     private subscription: Subscription;
 
@@ -23,19 +23,8 @@ export class CoursesComponent implements OnInit, OnDestroy {
         private filterByPipe: FilterByPipe) {
     }
 
-    /*public ngOnInit() {     // WITHOUT HTTP - WORKS
-        this.coursesService.getList().subscribe((course) => {
-            this.courses.push(course)
-        });
-    }*/
-
-    public ngOnInit() {     // WITH HTTP - DOESN'T WORK (in the console the courses are there)
-        this.subscription = this.coursesService.getList().subscribe((courses) => {
-            this.courses = courses;
-            this.coursesOriginal = this.courses;
-
-            console.log('****** COURSES ******\n', this.courses);
-        });
+    public ngOnInit() {
+        this.courses = this.coursesService.getList();
     }
 
     private deleteCourse(event) {
@@ -43,10 +32,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
     }
 
     public filterCourses(text) {
-        this.courses = this.filterByPipe.transform(this.coursesOriginal, 'title', text);
-    }
-
-    public ngOnDestroy() {
-        this.subscription.unsubscribe();
+        //this.courses = this.filterByPipe.transform(this.coursesOriginal, 'title', text);
     }
 }
