@@ -10,23 +10,18 @@ export class CoursesService {
   private courseList: Course[];
   private baseUrl: string;
 
-  public constructor(private http: Http) {
-    this.baseUrl = 'http://localhost:4002';
-  }
+  public constructor(private http: Http) {}
 
-  public getList(): Observable<Course[]> {
-    let request: Request,
-      requestOptions: RequestOptions = new RequestOptions();
-
-      requestOptions.method = RequestMethod.Get;
-      requestOptions.url = `${this.baseUrl}/courses`;
-
-      request = new Request(requestOptions);
-
-      return this.http.request(request)
+  public getList(start: number, count: number): Observable<Course[]> {
+      return this.http
+        .get('http://localhost:3004/courses', {
+          params: {
+            start,
+            count
+          }
+        })
         .map((response: Response) => response.json())
         .map((courses) => courses.map((course) => new Course(course)));
-
   }
 
   private createItem(course: Course): void {
