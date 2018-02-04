@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     return this.authService.isAuthenticated();
   }
 
-  public getUserInfo(): User {
+  public getUserInfo(): string {
     return this.authService.getUserInfo();
   }
 }

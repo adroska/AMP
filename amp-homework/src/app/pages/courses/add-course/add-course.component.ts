@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Course } from '../../../interfaces/course';
-import { ChangeDetectionStrategy } from '@angular/core/src/change_detection/constants';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-course',
@@ -11,12 +11,25 @@ import { ChangeDetectionStrategy } from '@angular/core/src/change_detection/cons
 })
 export class AddCourseComponent implements OnInit {
   public course: Course;
+  public form: FormGroup;
 
   public constructor(
     private router: Router,
+    private formBuilder: FormBuilder
   ) { }
 
   public ngOnInit() {
+    this.form = this.formBuilder.group({
+      title: ['',
+        [Validators.required,
+         Validators.maxLength(50)]],
+      description: ['',
+        [Validators.required,
+         Validators.maxLength(500)]],
+      creationDate: ['', Validators.required],
+      duration: ['0', Validators.required],
+      author: ['', Validators.required]
+    });
     this.course = { 
       id: 0,
       title: '',
@@ -27,8 +40,8 @@ export class AddCourseComponent implements OnInit {
     };
   }
 
-  public save() {
-    console.log('Add Course Component - Save');
+  public save(formData: FormGroup) {
+    console.log('Add Course Component - Save\n',formData.value);
   }
 
   public cancel() {
