@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService } from '../../../common/auth.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +19,10 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) { }
 
-  public ngOnInit() {
-    this.userName = 'Warner';
-    this.password = 'ea';
-  }
+  public ngOnInit() {}
 
-  public logIn(): void {
-    this.authService.logIn(this.userName, this.password)
+  public logIn(formData: NgForm): void {
+    this.authService.logIn(formData.value.username, formData.value.password)
       .subscribe((response) => {
         localStorage.setItem('token', response.token);
         this.router.navigate(['courses']);

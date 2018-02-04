@@ -1,13 +1,15 @@
-<div class="form">
+<form #form="ngForm" class="form" (submit)="logIn(form)">
   <div>
     <div>
-      <label>Username</label>
-      <input type="text" [(ngModel)]="userName"> *
+      <label>Username *</label>
+      <input type="text" name="username" #username="ngModel" ngModel required>
+      <span class="error-message" *ngIf="username.invalid && username.dirty">This field is required</span>
     </div>
     <div>
-      <label>Password</label>
-      <input type="password" [(ngModel)]="password"> *
+      <label>Password *</label>
+      <input type="password" name="password" #password="ngModel" ngModel required>
+      <span class="error-message" *ngIf="password.invalid && password.dirty">This field is required</span>
     </div>
-    <button (click)=logIn()>Enter</button>
+    <button type="submit" [disabled]="form.invalid && form.dirty">Enter</button>
   </div>
-</div>
+</form>
