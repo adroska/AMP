@@ -27,7 +27,7 @@ export class AddCourseComponent implements OnInit {
         [Validators.required,
          Validators.maxLength(500)]],
       creationDate: ['', Validators.required],
-      duration: ['0', Validators.required],
+      duration: ['', Validators.required],
       author: ['', Validators.required]
     });
     this.course = { 
