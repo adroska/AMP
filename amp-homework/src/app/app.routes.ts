@@ -20,7 +20,7 @@ export const ROUTES = [
       component: LoginComponent
     },
     {
-      path: 'add-course',
+      path: 'courses/new',
       component: AddCourseComponent,
       canActivate: [AuthGuard]
     },
