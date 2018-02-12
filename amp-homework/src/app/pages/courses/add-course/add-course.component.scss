@@ -9,11 +9,31 @@
     .buttons {
         margin-bottom: 10px;
         margin-left: 10px;
+        outline: none;
+    }
+
+    input,
+    textarea {
+        border-radius: 2px;
+
+        &.ng-touched.ng-invalid {
+            border: 1px solid #ff0000;
+        }
     }
 
     .buttons {
         width: 50%;
         margin: auto;
+    }
+
+    .error-message {
+        display: block;
+        padding: 5px;
+        margin-bottom: 10px;
+        border-radius: 2px;
+        color: #ff0000;
+        background-color: #ffb3b3;
+        text-align: center;
     }
 
     #duration {
@@ -22,5 +42,9 @@
 
     label[for='description'] {
         vertical-align: top;
+    }
+
+    textarea {
+        width: 90%;
     }
 }

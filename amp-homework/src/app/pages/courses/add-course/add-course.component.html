@@ -1,16 +1,28 @@
-<div class="add-course">
+<form class="add-course" [formGroup]="form" (submit)="save(form)">
   <label for="title">Title</label>
-  <input type=text id="title" placeholder="Title" [(ngModel)]="course.title"><br/>
+  <input type=text id="title" placeholder="Title" formControlName="title"><br/>
+  <span class="error-message" *ngIf="form.get('title')?.errors?.required && form.get('title')?.touched">This field is required</span>
+  <span class="error-message" *ngIf="form.get('title')?.errors?.maxlength && form.get('title')?.touched">Number of characters must be less than {{form.get('title')?.errors?.maxlength?.requiredLength}}</span>
+
   <label for="description">Description</label>
-  <textarea id="description" rows="4" cols="50" placeholder="Description" [(ngModel)]="course.description"></textarea><br/>
+  <textarea id="description" rows="4" cols="50" placeholder="Description" formControlName="description"></textarea><br/>
+  <span class="error-message" *ngIf="form.get('description')?.errors?.required && form.get('description')?.touched">This field is required</span>
+  <span class="error-message" *ngIf="form.get('description')?.errors?.maxlength && form.get('description')?.touched">Number of characters must be less than {{form.get('description')?.errors?.maxlength?.requiredLength}}</span>
+
   <label for="date">Date</label>
-  <input type=text id="date" [(ngModel)]="course.creationDate"><br/>
+  <input type=text id="date" formControlName="creationDate"><br/>
+  <span class="error-message" *ngIf="form.get('creationDate')?.errors?.required && form.get('creationDate')?.touched">This field is required</span>
+
   <label for="duration">Duration (min)</label>
-  <input type=text id="duration" [(ngModel)]="course.duration">{{course.duration | duration}}<br/>
+  <input type=text id="duration" formControlName="duration">{{form.get('duration')?.value | duration}}<br/>
+  <span class="error-message" *ngIf="form.get('duration')?.errors?.required && form.get('duration')?.touched">This field is required</span>
+
   <label for="authors">Authors</label>
-  <input type=text id="author">
+  <input type=text id="author" formControlName="author">
+  <span class="error-message" *ngIf="form.get('author')?.errors?.required && form.get('author')?.touched">This field is required</span>
+
   <div class="buttons">
-    <button (click)='save()'>Save</button>
+    <button type="submit" [disabled]="form.invalid">Save</button>
     <button (click)='cancel()'>Cancel</button>
   </div>
-</div>
+</form>

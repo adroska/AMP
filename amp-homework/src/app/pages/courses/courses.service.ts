@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
+import { Http, Response, Request, RequestOptions, RequestMethod } from '@angular/http';
 import { Course } from '../../interfaces/course';
 import { courses } from '../../mock-data/courses';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CoursesService {
 
   private courseList: Course[];
+  private baseUrl: string;
 
-  public constructor() { }
+  public constructor(private http: Http) {}
 
-  public getList(): Course[] {
-    this.courseList = [];
-    var source = Observable.from(courses)
-    .filter(course => {
-      var currentDate = new Date(),
-        twoWeeksInMillisec = 14 * 24 * 60 * 60 * 1000;
-      
-      return !(currentDate.valueOf() - twoWeeksInMillisec > course.creationDate.valueOf());
-    });
-    source.subscribe(x => this.courseList.push(x));
-
-    return this.courseList;
+  public getList(start: number, count: number): Observable<Course[]> {
+      return this.http
+        .get('http://localhost:3004/courses', {
+          params: {
+            start,
+            count
+          }
+        })
+        .map((response: Response) => response.json())
+        .map((courses) => courses.map((course) => new Course(course)));
   }
 
   private createItem(course: Course): void {

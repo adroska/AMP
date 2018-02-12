@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService } from '../../../common/auth.service';
-import { ChangeDetectionStrategy } from '@angular/core/src/change_detection/constants';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -13,15 +14,19 @@ export class LoginComponent implements OnInit {
   public userName: string;
   public password: string;
 
-  public constructor(private authService: AuthService) { }
+  public constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
-  public ngOnInit() {
-    this.userName = 'Anonymus';
-    this.password = 'Password';
-  }
+  public ngOnInit() {}
 
-  public logIn(): void {
-    this.authService.logIn(this.userName, this.password);
+  public logIn(formData: NgForm): void {
+    this.authService.logIn(formData.value.username, formData.value.password)
+      .subscribe((response) => {
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['courses']);
+      });
   }
 
 }

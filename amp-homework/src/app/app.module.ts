@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from  '@angular/router';
 
@@ -20,6 +20,8 @@ import { OrderByPipe } from './common/order-by.pipe';
 import { FilterByPipe } from './common/filter-by.pipe';
 import { AddCourseComponent } from './pages/courses/add-course/add-course.component';
 import { AuthGuard } from './common/auth.guard';
+import { NoContentComponent } from './pages/no-content/no-content.component';
+import { ROUTES } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -35,32 +37,15 @@ import { AuthGuard } from './common/auth.guard';
     DurationPipe,
     OrderByPipe,
     FilterByPipe,
-    AddCourseComponent
+    AddCourseComponent,
+    NoContentComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot([
-      { path: '',
-        redirectTo: 'courses',
-        pathMatch: 'full'
-      },
-      {
-        path: 'courses',
-        component: CoursesComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: 'add-course',
-        component: AddCourseComponent,
-        canActivate: [AuthGuard]
-      }
-    ], { useHash: true })
+    RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   providers: [CoursesService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
